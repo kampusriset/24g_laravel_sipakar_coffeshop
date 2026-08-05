@@ -100,41 +100,33 @@
             {{-- HEADER --}}
             <div class="bg-white border-b">
 
-                <div class="max-w-[1600px] mx-auto px-10 py-10">
+                <div class="bg-white border border-gray-200 rounded-2xl px-8 py-6 shadow-sm">
 
-                    <div class="bg-white border border-gray-200 rounded-[32px] p-10 shadow-sm">
+                    <div class="flex items-center justify-between">
 
-                        <div class="flex items-center justify-between">
+                        <div>
 
-                            <div>
+                            <p class="text-[11px] uppercase tracking-[0.35em] text-orange-500 font-bold">
+                                INPUT PESANAN
+                            </p>
 
-                                <p class="text-xs uppercase tracking-[0.35em] text-orange-500 font-bold">
-                                    INPUT PESANAN
-                                </p>
+                            <h1 class="mt-1 text-3xl font-bold text-gray-900">
+                                Input Pesanan Baru
+                            </h1>
 
-                                <h1 class="mt-3 text-5xl font-bold text-gray-900">
-                                    Create New Order
-                                </h1>
-
-                                <p class="mt-5 text-lg text-gray-500 leading-8 max-w-2xl">
-
-                                    Pilih menu favorit pelanggan,
-                                    tambahkan ke keranjang,
-                                    kemudian simpan transaksi dengan cepat.
-
-                                </p>
-
-                            </div>
-
-                            <a
-                                href="{{ route('dashboard') }}"
-                                class="rounded-full border border-orange-500 px-7 py-3 font-medium text-orange-500 transition hover:bg-orange-500 hover:text-white">
-
-                                ← Dashboard
-
-                            </a>
+                            <p class="mt-2 text-sm text-gray-500">
+                                Pilih menu pelanggan lalu simpan transaksi.
+                            </p>
 
                         </div>
+
+                        <a
+                            href="{{ route('dashboard') }}"
+                            class="border border-orange-500 text-orange-500 px-5 py-2 rounded-xl text-sm font-medium hover:bg-orange-500 hover:text-white transition">
+
+                            ← Dashboard
+
+                        </a>
 
                     </div>
 
@@ -299,35 +291,31 @@
 
                                     <div class="grid grid-cols-2 gap-3">
 
-                                        <label class="cursor-pointer">
+                                        <label class="payment-label cursor-pointer">
 
                                             <input
                                                 type="radio"
                                                 name="metode_pembayaran"
-                                                value="Tunai"
-                                                class="hidden"
+                                                value="tunai"
+                                                class="hidden payment-radio"
                                                 checked>
 
-                                            <div class="rounded-xl border border-orange-500 bg-orange-500 py-3 text-center font-medium text-white">
-
+                                            <div class="payment-card rounded-xl border border-orange-500 bg-orange-500 py-3 text-center font-medium text-white transition">
                                                 Tunai
-
                                             </div>
 
                                         </label>
 
-                                        <label class="cursor-pointer">
+                                        <label class="payment-label cursor-pointer">
 
                                             <input
                                                 type="radio"
                                                 name="metode_pembayaran"
-                                                value="QRIS"
-                                                class="hidden">
+                                                value="qris"
+                                                class="hidden payment-radio">
 
-                                            <div class="rounded-xl border border-gray-300 py-3 text-center font-medium">
-
+                                            <div class="payment-card rounded-xl border border-gray-300 py-3 text-center font-medium transition">
                                                 QRIS
-
                                             </div>
 
                                         </label>
@@ -425,6 +413,38 @@
                 alert('Pilih minimal 1 menu terlebih dahulu.');
             }
         });
+
+        document.querySelectorAll('.payment-radio').forEach(radio => {
+
+            radio.addEventListener('change', function () {
+
+                document.querySelectorAll('.payment-card').forEach(card => {
+
+                    card.classList.remove(
+                        'bg-orange-500',
+                        'text-white',
+                        'border-orange-500'
+                    );
+
+                    card.classList.add(
+                        'border-gray-300'
+                    );
+
+                });
+
+                const card = this.nextElementSibling;
+
+                card.classList.remove('border-gray-300');
+
+                card.classList.add(
+                    'bg-orange-500',
+                    'text-white',
+                    'border-orange-500'
+                );
+
+            });
+
+        });        
     </script>
 </body>
 </html>
