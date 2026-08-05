@@ -71,12 +71,14 @@
 
 
 
-        {{-- Checkout --}}
+        {{-- Lihat Keranjang --}}
         <button
-            onclick="lanjutCheckout()"
+            onclick="bukaKeranjang()"
             class="mt-6 w-full rounded-2xl bg-orange-500 py-4 font-semibold text-white transition hover:bg-orange-600">
 
-            Lanjut ke Checkout →
+            <i class="fa-solid fa-cart-shopping mr-2"></i>
+
+            Lihat Keranjang →
 
         </button>
 
@@ -131,7 +133,7 @@ function saveCart(cart) {
     renderCartPanel();
 }
 
-function tambahKeranjang(menuId, nama, harga) {
+function tambahKeranjang(menuId, nama, harga, gambar) {
 
     let cart = getCart();
 
@@ -147,13 +149,13 @@ function tambahKeranjang(menuId, nama, harga) {
             menu_id: menuId,
             nama: nama,
             harga: harga,
+            gambar: gambar,
             jumlah: 1
         });
 
     }
 
     saveCart(cart);
-
 }
 
 function ubahJumlahCart(index, delta) {
@@ -177,6 +179,22 @@ function bersihkanKeranjang() {
     localStorage.removeItem('cart');
 
     renderCartPanel();
+
+}
+
+function bukaKeranjang() {
+
+    let cart = getCart();
+
+    if (cart.length === 0) {
+
+        alert('Keranjang masih kosong.');
+
+        return;
+
+    }
+
+    window.location.href = "{{ route('pelanggan.keranjang') }}";
 
 }
 

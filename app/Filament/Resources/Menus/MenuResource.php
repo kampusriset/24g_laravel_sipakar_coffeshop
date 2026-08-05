@@ -75,7 +75,10 @@ class MenuResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('gambar'),
+                Tables\Columns\ImageColumn::make('gambar')
+                    ->disk('public')
+                    ->square()
+                    ->size(60),
                 Tables\Columns\TextColumn::make('nama')->searchable(),
                 Tables\Columns\TextColumn::make('kategoriMenu.nama')->label('Kategori'),
                 Tables\Columns\TextColumn::make('harga')->money('IDR'),

@@ -21,18 +21,12 @@
     {{-- Menu --}}
     <nav class="flex-1 px-5 py-8 space-y-2">
 
-        <a href="{{ route('pelanggan.beranda') }}"
-        class="group flex items-center gap-4 rounded-xl px-4 py-3 transition-all duration-300
-        {{ request()->routeIs('pelanggan.beranda')
-            ? 'bg-gray-100 text-orange-500'
-            : 'text-gray-500 hover:bg-gray-50 hover:text-orange-500' }}">
-
+        <a href="{{ route('pelanggan.beranda') }}" class="group flex items-center gap-4 rounded-xl px-4 py-3 transition-all duration-300 {{ request()->routeIs('pelanggan.beranda') ? 'bg-gray-100 text-orange-500' : 'text-gray-500 hover:bg-gray-50 hover:text-orange-500' }}">
             <i class="fa-solid fa-house w-5 text-center"></i>
 
             <span class="font-medium">
                 Beranda
             </span>
-
         </a>
 
         <a href="{{ route('pelanggan.menu') }}"
@@ -49,12 +43,7 @@
 
         </a>
 
-        <a href="{{ route('ai-barista.index') }}"
-        class="group flex items-center justify-between rounded-xl px-4 py-3 transition-all duration-300
-        {{ request()->routeIs('ai-barista.*')
-            ? 'bg-gray-100 text-orange-500'
-            : 'text-gray-500 hover:bg-gray-50 hover:text-orange-500' }}">
-
+        <a href="{{ route('ai-barista.index') }}" class="group flex items-center justify-between rounded-xl px-4 py-3 transition-all duration-300 {{ request()->routeIs('ai-barista.*') ? 'bg-gray-100 text-orange-500' : 'text-gray-500 hover:bg-gray-50 hover:text-orange-500' }}">
             <span class="flex items-center gap-4">
 
                 <i class="fa-solid fa-wand-magic-sparkles w-5 text-center"></i>
@@ -75,7 +64,6 @@
             </span>
 
             @endunless
-
         </a>
 
         <div class="my-6 border-t border-gray-200"></div>
