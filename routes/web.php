@@ -18,3 +18,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+use App\Http\Controllers\ReportController;
+
+Route::get('/report/menu/excel', [ReportController::class, 'menuExcel'])->name('report.menu.excel');
+Route::get('/report/menu/pdf', [ReportController::class, 'menuPdf'])->name('report.menu.pdf');
+Route::get('/report/transaksi/excel', [ReportController::class, 'transaksiExcel'])->name('report.transaksi.excel');
+Route::get('/report/transaksi/pdf', [ReportController::class, 'transaksiPdf'])->name('report.transaksi.pdf');
