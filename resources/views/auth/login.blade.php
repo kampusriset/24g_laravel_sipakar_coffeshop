@@ -24,13 +24,6 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <div class="mt-4 text-center">
-            <a href="{{ route('auth.google') }}"
-                class="inline-flex items-center gap-2 border rounded-lg px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
-                Masuk dengan Google
-            </a>
-        </div>
-
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
@@ -50,8 +43,5 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
-
-
-
     </form>
 </x-guest-layout>
