@@ -25,3 +25,7 @@ Route::get('/report/menu/excel', [ReportController::class, 'menuExcel'])->name('
 Route::get('/report/menu/pdf', [ReportController::class, 'menuPdf'])->name('report.menu.pdf');
 Route::get('/report/transaksi/excel', [ReportController::class, 'transaksiExcel'])->name('report.transaksi.excel');
 Route::get('/report/transaksi/pdf', [ReportController::class, 'transaksiPdf'])->name('report.transaksi.pdf');
+
+use App\Http\Controllers\AiBaristaController;
+Route::get('/ai-barista', [AiBaristaController::class, 'index'])->name('ai-barista.index');
+Route::post('/ai-barista/proses', [AiBaristaController::class, 'proses'])->name('ai-barista.proses');
