@@ -311,7 +311,7 @@
 
                                                 <button
 
-                                                    onclick="tambahKeranjang({{ $m->id }}, '{{ $m->nama }}', {{ $m->harga }})"
+                                                    onclick="tambahKeranjang({{ $m->id }}, '{{ $m->nama }}', {{ $m->harga }}, '{{ $m->gambar ? asset('storage/'.$m->gambar) : '' }}')"
 
                                                     class="w-12 h-12 rounded-full bg-orange-500 text-white transition hover:bg-orange-600 hover:scale-110">
 

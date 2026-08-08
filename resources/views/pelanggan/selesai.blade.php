@@ -25,6 +25,11 @@
                 <p class="text-sm text-gray-500 pt-2">Metode: {{ ucfirst($transaksi->pembayaran->metode) }}</p>
             </div>
 
+            <a href="{{ route('pelanggan.struk', $transaksi->id) }}" target="_blank"
+                class="block bg-white border-2 border-amber-600 text-amber-600 rounded-lg py-3 font-semibold hover:bg-amber-50 mb-3">
+                🖨️ Cetak Struk
+            </a>
+
             <a href="{{ route('pelanggan.beranda') }}" class="block bg-amber-600 text-white rounded-lg py-3 font-semibold hover:bg-amber-700">
                 Kembali ke Beranda
             </a>

@@ -272,7 +272,12 @@
                                     </div>
 
                                     {{-- Tombol --}}
-                                    <div class="mt-5">
+                                    <div class="mt-5 space-y-2">
+
+                                        <a href="{{ route('pelanggan.struk', $t->id) }}" target="_blank"
+                                            class="block w-full text-center border-2 border-gray-300 text-gray-600 py-3 rounded-xl font-semibold transition hover:border-orange-500 hover:text-orange-500">
+                                            🖨️ Cetak Struk
+                                        </a>
 
                                         @if($t->status=='menunggu')
 
@@ -349,6 +354,7 @@
                                     <th class="text-left px-6 py-2">Pelanggan</th>
                                     <th class="text-left px-6 py-2">Total</th>
                                     <th class="text-left px-6 py-2">Waktu</th>
+                                    <th class="text-left px-6 py-2">Struk</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y">
@@ -357,9 +363,15 @@
                                         <td class="px-6 py-3">{{ $t->pelanggan->nama ?? '-' }}</td>
                                         <td class="px-6 py-3">Rp {{ number_format($t->total_harga, 0, ',', '.') }}</td>
                                         <td class="px-6 py-3 text-gray-400">{{ $t->created_at->format('H:i') }}</td>
+                                        <td class="px-6 py-3">
+                                            <a href="{{ route('pelanggan.struk', $t->id) }}" target="_blank"
+                                                class="text-orange-500 hover:text-orange-600 font-medium">
+                                                🖨️ Cetak
+                                            </a>
+                                        </td>
                                     </tr>
                                 @empty
-                                    <tr><td colspan="3" class="text-center text-gray-400 py-6">Belum ada transaksi.</td></tr>
+                                    <tr><td colspan="4" class="text-center text-gray-400 py-6">Belum ada transaksi.</td></tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -397,5 +409,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Kembalikan posisi scroll setelah reload (dari aksi Proses/Siap Diambil/Selesai)
+            const savedScroll = sessionStorage.getItem('dashboardScroll');
+            if (savedScroll !== null) {
+                window.scrollTo(0, parseInt(savedScroll));
+                sessionStorage.removeItem('dashboardScroll');
+            }
+
+            // Simpan posisi scroll saat ini sebelum form status pesanan disubmit
+            document.querySelectorAll('form[action*="/pesanan/"]').forEach(function (form) {
+                form.addEventListener('submit', function () {
+                    sessionStorage.setItem('dashboardScroll', window.scrollY);
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>

@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use App\Filament\Widgets\StatsOverview;
 use App\Filament\Widgets\StokRendah;
 use App\Filament\Widgets\TransaksiTerbaru;
+use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -30,14 +31,17 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->brandName('Nusaroma Coffee')
+            ->brandLogo(fn () => view('filament.admin.logo'))
+            ->brandLogoHeight('2rem')
             ->colors([
-                'primary' => Color::hex('#92400e'),
+                'primary' => Color::hex('#f97316'),
             ])
+            ->font('Manrope', provider: GoogleFontProvider::class)
             ->darkMode(false)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Dashboard::class,  
+                Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
@@ -59,5 +63,5 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
-    } 
+    }
 }
