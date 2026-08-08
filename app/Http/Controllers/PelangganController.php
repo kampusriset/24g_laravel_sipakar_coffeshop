@@ -107,4 +107,12 @@ class PelangganController extends Controller
 
         return view('pelanggan.selesai', compact('transaksi'));
     }
+
+    public function struk(Transaksi $transaksi)
+    {
+        $transaksi->load('detailTransaksi.menu', 'pelanggan', 'pembayaran');
+
+        return view('pelanggan.struk', compact('transaksi'));
+    }
+
 }

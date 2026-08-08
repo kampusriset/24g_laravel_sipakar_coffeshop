@@ -14,6 +14,7 @@ Route::get('/keranjang', [PelangganController::class, 'keranjang'])->name('pelan
 Route::get('/checkout', [PelangganController::class, 'checkoutForm'])->name('pelanggan.checkout');
 Route::post('/checkout/proses', [PelangganController::class, 'prosesCheckout'])->name('pelanggan.checkout.proses');
 Route::get('/selesai/{transaksi}', [PelangganController::class, 'selesai'])->name('pelanggan.selesai');
+Route::get('/struk/{transaksi}', [PelangganController::class, 'struk'])->name('pelanggan.struk');
 
 // AI Barista
 Route::get('/ai-barista', [AiBaristaController::class, 'index'])->name('ai-barista.index');
