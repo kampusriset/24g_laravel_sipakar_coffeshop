@@ -33,11 +33,11 @@ Nusaroma Coffee melayani tiga peran pengguna dalam satu sistem: **Pelanggan** (m
 ## 📸 Tampilan Aplikasi
 
 ### Beranda Pelanggan
-![Beranda](docs/screenshots/beranda.png)
+![Beranda](docs/screenshots/Beranda.png)
 
 ### AI Barista (Chat Rekomendasi)
 ![AI Barista](docs/screenshots/ai-barista.png)
-![AI Barista](docs/screenshots/ai-barista2.png)
+![AI Barista - Hasil Rekomendasi](docs/screenshots/ai-barista2.png)
 
 ### Dashboard Pegawai
 ![Dashboard Pegawai](docs/screenshots/dashboard-pegawai.png)
