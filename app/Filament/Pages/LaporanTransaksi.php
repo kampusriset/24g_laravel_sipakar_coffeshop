@@ -26,7 +26,10 @@ class LaporanTransaksi extends Page implements HasForms
 
     public function mount(): void
     {
-        $this->form->fill();
+        $this->form->fill([
+            'dari' => now()->startOfMonth()->toDateString(),
+            'sampai' => now()->toDateString(),
+        ]);
     }
 
     public function form(Schema $schema): Schema
@@ -35,10 +38,14 @@ class LaporanTransaksi extends Page implements HasForms
             ->components([
                 DatePicker::make('dari')
                     ->label('Dari Tanggal')
-                    ->native(false),
+                    ->native(false)
+                    ->live() 
+                    ->default(now()->startOfMonth()),
                 DatePicker::make('sampai')
                     ->label('Sampai Tanggal')
-                    ->native(false),
+                    ->native(false)
+                    ->live() 
+                    ->default(now()),
             ])
             ->statePath('data')
             ->columns(2);
